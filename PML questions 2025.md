@@ -50,3 +50,7 @@
 48. Introduce the generative modelling problem and present different models for generative AI
 49. Introduce Autoencoding Variational Bayes
 50. Introduce Denoising Diffusion Models
+
+
+___
+Hello from $M^E$
