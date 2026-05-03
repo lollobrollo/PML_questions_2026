@@ -1,3 +1,10 @@
 {
-  "theme": "moonstone"
+  "theme": "moonstone",
+  "cssTheme": "Solarized",
+  "interfaceFontFamily": "DejaVu Math TeX Gyre",
+  "textFontFamily": "DejaVu Math TeX Gyre",
+  "monospaceFontFamily": "DejaVu Sans Mono",
+  "enabledCssSnippets": [
+    "center-mermaid"
+  ]
 }

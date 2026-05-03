@@ -1,0 +1,5 @@
+/* center all Mermaid diagrams */
+.markdown-preview-view .mermaid {
+    margin-left: auto;
+    margin-right: auto;
+}

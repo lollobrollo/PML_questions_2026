@@ -44,56 +44,137 @@ T3("$x_3$")
 TN("$x_n$")
 ```
 
+
 ## 4. Conditional Independence in Bayesian Networks
 
-5. Introduce Random Markov Fields 
-6. Define Factor Graphs and How to convert Bayesian Networks and Markov Random Fields to Factor Graphs
-7. Describe the Sum Product algorithm
-8. Describe the Max Plus algorithm
+We say that two random variables $A$ and $B$ are conditionally indipendent  given a third variable $C$ when $P(A|B,C)=P(A|C)$. For a node in a bayesian network a certain node, in this case $D$ is conditionally independent from the rest of the network when conditioned on the set of nodes that point to it, and the nodes it points to. So for $D$ $p(D|A,B,C,E) = p(D|C,E)$ 
 
-9. Define HMM and different Inference problems in HMM
-10. Discuss closure properties of the Gaussian Distribution
-11. How to transform a generic Gaussian Distribution to a Standard Gaussian via Principal components
-12. Introduce the Bayesian Estimation Principles
-13. Introduce Bayesian Linear Regression 
-14. Prior and posterior over parameters in Bayesian Linear Regression
-15. Predictive distribution in Bayesian Linear Regression
-16. Discuss Model Evidence and hyper parameter optimization in Bayesian Linear Regression
-17. Discuss Bayesian Model Comparison
-18. Describe Laplace Approximation
-19. Discuss Bayesian Information Content for Model Comparison
-20. Introduce Bayesian Logistic Regression
-21. Introduce the kernel trick and the dual formulation of linear regression
-22. Introduce random functions and Gaussian Processes 
-23. Present Gaussian Process regression
+$$ \mathrm{p(A,B,C,D,E)=p(A)\,p(B|A)\,p(C|A)\,p(B|C)\,p(E)\,p(D|C,E)} $$
+```mehrmaid
+graph LR
+	E --> D
+	A --> B
+	B --> C 
+	A --> C
+	C --> D
 
-24. Rejection sampling
-25. Importance sampling
-26. Introduce Markov Chains and the Detailed Balance condition
-27. Introduce Markov Chain Monte Carlo and the Metropolis Hastings criterion
-28. Discuss issues of vanilla MCMC
-29. Gibbs Sampling
-30. Discuss  Convergence Diagnostics and the Rhat index
-31. Introduce the ideas of effective sample size
-32. Hamiltonian Monte Carlo
+A("A")
+B("B")
+C("C")
+D("D")
+E("E")
+```
 
-33. Introduce the problem that can be solved by EM and derive the  Evidence lower bound
-34. Discuss the Expectation Maximization algorithm (both E-step and M-step)
-35. Discuss convergence of the EM algorithm
-36. Discuss EM algorithm for Gaussian Mixtures
-37. Introduce  the problem formulation for Variational Inference
-38. Introduce Mean Field Variational Inference
-39. Example of Mean Field Variational Inference on Gaussian distribution
-40. Variational Inference with direct and inverse KL
-41. Variational Linear Regression 
-42. Introduce Black box Variational Inference 
-43. Discuss how to compute the gradient of the ELBO for a non-reparameterizable variational distribution
-44. Discuss Rao-Blackwellization for variance reduction
-45. Discuss Control variates for variance reduction
-46. Discuss Bayesian Neural Networks
-47. Introduce the generative modelling problem and present different models for generative AI
-48. Introduce Autoencoding Variational Bayes
-49. Introduce Denoising Diffusion Models
+
+## 5. Introduce Random Markov Fields 
+
+In markov random fields the factoring of the probability occurs in the following way, the factoring represents 
+
+$$\mathrm{p(A,B,C,D,E)=p(A,B,C)\,p(D,E)\,p(C,D)}$$
+```mehrmaid
+graph LR
+	E <---> D
+	A <---> B
+	B <---> C 
+	A <---> C
+	C <---> D
+
+A("A")
+B("B")
+C("C")
+D("D")
+E("E")
+```
+
+
+
+## 6. Define Factor Graphs and How to convert Bayesian Networks and Markov Random Fields to Factor Graphs
+
+## 7. Describe the Sum Product algorithm
+
+## 8. Describe the Max Plus algorithm
+
+## 9. Define HMM and different Inference problems in HMM
+
+## 10. Discuss closure properties of the Gaussian Distribution
+
+## 11. How to transform a generic Gaussian Distribution to a Standard Gaussian via Principal components
+
+## 12. Introduce the Bayesian Estimation Principles
+
+## 13. Introduce Bayesian Linear Regression 
+
+## 14. Prior and posterior over parameters in Bayesian Linear Regression
+
+## 15. Predictive distribution in Bayesian Linear Regression
+
+## 16. Discuss Model Evidence and hyper parameter optimization in Bayesian Linear Regression
+
+## 17. Discuss Bayesian Model Comparison
+
+## 18. Describe Laplace Approximation
+
+## 19. Discuss Bayesian Information Content for Model Comparison
+
+## 20. Introduce Bayesian Logistic Regression
+
+## 21. Introduce the kernel trick and the dual formulation of linear regression
+
+## 22. Introduce random functions and Gaussian Processes 
+
+## 23. Present Gaussian Process regression
+
+## 24. Rejection sampling
+
+## 25. Importance sampling
+
+## 26. Introduce Markov Chains and the Detailed Balance condition
+
+## 27. Introduce Markov Chain Monte Carlo and the Metropolis Hastings criterion
+
+## 28. Discuss issues of vanilla MCMC
+
+## 29. Gibbs Sampling
+
+## 30. Discuss  Convergence Diagnostics and the Rhat index
+
+## 31. Introduce the ideas of effective sample size
+
+## 32. Hamiltonian Monte Carlo
+
+## 33. Introduce the problem that can be solved by EM and derive the  Evidence lower bound
+
+## 34. Discuss the Expectation Maximization algorithm (both E-step and M-step)
+
+## 35. Discuss convergence of the EM algorithm
+
+## 36. Discuss EM algorithm for Gaussian Mixtures
+
+## 37. Introduce  the problem formulation for Variational Inference
+
+## 38. Introduce Mean Field Variational Inference
+
+## 39. Example of Mean Field Variational Inference on Gaussian distribution
+
+## 40. Variational Inference with direct and inverse KL
+
+## 41. Variational Linear Regression 
+
+## 42. Introduce Black box Variational Inference 
+
+## 43. Discuss how to compute the gradient of the ELBO for a non-reparameterizable variational distribution
+
+## 44. Discuss Rao-Blackwellization for variance reduction
+
+## 45. Discuss Control variates for variance reduction
+
+## 46. Discuss Bayesian Neural Networks
+
+## 47. Introduce the generative modelling problem and present different models for generative AI
+
+## 48. Introduce Autoencoding Variational Bayes
+
+## 49. Introduce Denoising Diffusion Models
 
 
 ___
