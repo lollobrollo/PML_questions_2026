@@ -19,7 +19,7 @@ $$
 		\forall \epsilon, \delta \in (0,1) \space \exists n \in \mathbb{N} \,.\, \forall m>n \ \forall D \sim p^N(X,Y) 
 	}
 $$
- -> **If the realizability assumption holds**
+ **If the realizability assumption holds** (?)
 $$
 	\mathrm{
 		Pr( R(h_D^*(x)) < \epsilon ) \geq 1 - \delta
@@ -47,7 +47,7 @@ TN("$x_n$")
 
 ## 4. Conditional Independence in Bayesian Networks
 
-We say that two random variables $A$ and $B$ are conditionally indipendent  given a third variable $C$ when $P(A|B,C)=P(A|C)$. For a node in a bayesian network a certain node, in this case $D$ is conditionally independent from the rest of the network when conditioned on the set of nodes that point to it, and the nodes it points to. So for $D$ $p(D|A,B,C,E) = p(D|C,E)$ 
+We say that two random variables $A$ and $B$ are conditionally indipendent  given a third variable $C$ when $P(A|B,C)=P(A|C)$, written as $A \perp B \,|\, C$. For a node in a bayesian network a certain node, in this case $D$ is conditionally independent from the rest of the network when conditioned on the set of nodes that point to it, and the nodes it points to. So for $D$ would be $p(D|A,B,C,E) = p(D|C,E)$. 
 
 $$ \mathrm{p(A,B,C,D,E)=p(A)\,p(B|A)\,p(C|A)\,p(B|C)\,p(E)\,p(D|C,E)} $$
 ```mehrmaid
@@ -90,6 +90,44 @@ E("E")
 
 ## 6. Define Factor Graphs and How to convert Bayesian Networks and Markov Random Fields to Factor Graphs
 
+In factor graphs i represent the probability density
+
+$$\mathrm{p(A,B,C,D,E)=f_1(A,B,C)\,f_2(C,D)}$$
+```mehrmaid
+graph LR
+	A <---> B
+	B <---> C 
+	A <---> C
+	C <---> D
+
+A("A")
+B("B")
+C("C")
+D("D")
+```
+
+Becomes
+```mehrmaid
+graph LR
+	A_ <---> f_1
+	B_ <---> f_1 
+	C_ <---> f_2
+	C_ <---> f_1
+	D_ <---> f_2
+ 
+A_("A")
+B_("B")
+C_("C")
+D_("D")
+f_1("$f_1$")
+f_2("$f_2$")
+
+style f_1 fill:#bbbbbb
+style f_2 fill:#bbbbbb
+```
+
+
+
 ## 7. Describe the Sum Product algorithm
 
 ## 8. Describe the Max Plus algorithm
@@ -125,6 +163,28 @@ E("E")
 ## 23. Present Gaussian Process regression
 
 ## 24. Rejection sampling
+
+Given a sampling problem from a distribution $p(x) = \frac{1}{Z} q(x)$ rejection sampling employs the following schema
+```julia
+function rejection_sampling(q, g, M, N)
+	# q = unnormalized distirbution density
+	# g = sampling distribution
+	# M = scale
+	# N = number of samples
+	samples = []
+	
+	while length(samples) != N
+		x_c = sample(g)
+		u   = sample(Uniform(0,1))
+		tr  = q(x_c) / (M * g(x_c))
+		if tr < u
+			append!(samples, x_c)
+		end
+	end
+	
+	return samples
+end
+```
 
 ## 25. Importance sampling
 
